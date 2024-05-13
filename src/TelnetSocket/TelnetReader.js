@@ -26,10 +26,12 @@ class TelnetReader extends Transform {
 
     switch (flushReason) {
       case reason.DATA:
+        console.log('reading', this.#data);
+
         if (
           length >= 2 &&
-          this.#data[length - 1] == 0x0a &&
-          this.#data[length - 2] == 0x0d
+          this.#data[length - 1] == 0x0a // &&
+          // this.#data[length - 2] == 0x0d
         ) {
           flush = true;
         }
